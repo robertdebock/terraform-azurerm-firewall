@@ -1,0 +1,51 @@
+---
+on:
+  - push
+
+jobs:
+  terraform:
+    name: terraform
+    env:
+      ARM_CLIENT_ID: ${{ secrets.AZURE_AD_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.AZURE_AD_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.AZURE_AD_TENANT_ID }}
+    runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - name: default
+          - name: specific
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: terraform init
+        uses: robertdebock/terraform-action@1.1.1
+        with:
+          directory: ./examples/${{ matrix.config.name }}
+      - name: terraform validate
+        uses: robertdebock/terraform-action@1.1.1
+        with:
+          action: validate
+          directory: ./examples/${{ matrix.config.name }}
+      - name: terraform plan
+        uses: robertdebock/terraform-action@1.1.1
+        with:
+          action: plan
+          directory: ./examples/${{ matrix.config.name }}
+      - name: terraform apply
+        uses: robertdebock/terraform-action@1.1.1
+        with:
+          action: apply
+          directory: ./examples/${{ matrix.config.name }}
+        env:
+          TF_CLI_ARGS: "-input=false -auto-approve"
+      - name: terraform destroy
+        uses: robertdebock/terraform-action@1.1.1
+        with:
+          action: destroy
+          directory: ./examples/${{ matrix.config.name }}
+        env:
+          TF_CLI_ARGS: "-input=false -auto-approve"
+        if: ${{ always() }}
