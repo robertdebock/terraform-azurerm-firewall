@@ -95,7 +95,6 @@ resource "azurerm_firewall" "default" {
   # Not implemented:
   # sku_name            = var.firewall_sku_name
   # sku_tier            = var.firewall_sku_tier
-
   # dns_servers         = var.firewall_dns_servers
   # private_ip_ranges   = var.firewall_private_ip_ranges
   # threat_intel_mode   = var.firewall_threat_intel_mode
