@@ -1,0 +1,44 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] module.azurerm_firewall.azurerm_firewall.default (expand)" [label = "module.azurerm_firewall.azurerm_firewall.default", shape = "box"]
+		"[root] module.azurerm_firewall.azurerm_firewall_policy.default (expand)" [label = "module.azurerm_firewall.azurerm_firewall_policy.default", shape = "box"]
+		"[root] module.azurerm_firewall.azurerm_firewall_policy_rule_collection_group.default (expand)" [label = "module.azurerm_firewall.azurerm_firewall_policy_rule_collection_group.default", shape = "box"]
+		"[root] module.azurerm_firewall.azurerm_public_ip.default (expand)" [label = "module.azurerm_firewall.azurerm_public_ip.default", shape = "box"]
+		"[root] module.azurerm_firewall.azurerm_resource_group.default (expand)" [label = "module.azurerm_firewall.azurerm_resource_group.default", shape = "box"]
+		"[root] module.azurerm_firewall.azurerm_subnet.default (expand)" [label = "module.azurerm_firewall.azurerm_subnet.default", shape = "box"]
+		"[root] module.azurerm_firewall.azurerm_virtual_network.default (expand)" [label = "module.azurerm_firewall.azurerm_virtual_network.default", shape = "box"]
+		"[root] module.azurerm_firewall.provider[\"registry.terraform.io/hashicorp/azurerm\"]" [label = "module.azurerm_firewall.provider[\"registry.terraform.io/hashicorp/azurerm\"]", shape = "diamond"]
+		"[root] output.public_ip_address" [label = "output.public_ip_address", shape = "note"]
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] module.azurerm_firewall (close)"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.public_ip_address"
+		"[root] module.azurerm_firewall (close)" -> "[root] module.azurerm_firewall.azurerm_firewall.default (expand)"
+		"[root] module.azurerm_firewall (close)" -> "[root] module.azurerm_firewall.azurerm_firewall_policy_rule_collection_group.default (expand)"
+		"[root] module.azurerm_firewall (close)" -> "[root] module.azurerm_firewall.output.public_ip_address (expand)"
+		"[root] module.azurerm_firewall.azurerm_firewall.default (expand)" -> "[root] module.azurerm_firewall.azurerm_public_ip.default (expand)"
+		"[root] module.azurerm_firewall.azurerm_firewall.default (expand)" -> "[root] module.azurerm_firewall.azurerm_subnet.default (expand)"
+		"[root] module.azurerm_firewall.azurerm_firewall_policy.default (expand)" -> "[root] module.azurerm_firewall.azurerm_resource_group.default (expand)"
+		"[root] module.azurerm_firewall.azurerm_firewall_policy_rule_collection_group.default (expand)" -> "[root] module.azurerm_firewall.azurerm_firewall_policy.default (expand)"
+		"[root] module.azurerm_firewall.azurerm_public_ip.default (expand)" -> "[root] module.azurerm_firewall.azurerm_resource_group.default (expand)"
+		"[root] module.azurerm_firewall.azurerm_resource_group.default (expand)" -> "[root] module.azurerm_firewall.provider[\"registry.terraform.io/hashicorp/azurerm\"]"
+		"[root] module.azurerm_firewall.azurerm_resource_group.default (expand)" -> "[root] module.azurerm_firewall.var.location (expand)"
+		"[root] module.azurerm_firewall.azurerm_resource_group.default (expand)" -> "[root] module.azurerm_firewall.var.name (expand)"
+		"[root] module.azurerm_firewall.azurerm_subnet.default (expand)" -> "[root] module.azurerm_firewall.azurerm_virtual_network.default (expand)"
+		"[root] module.azurerm_firewall.azurerm_subnet.default (expand)" -> "[root] module.azurerm_firewall.var.address_prefix (expand)"
+		"[root] module.azurerm_firewall.azurerm_virtual_network.default (expand)" -> "[root] module.azurerm_firewall.azurerm_resource_group.default (expand)"
+		"[root] module.azurerm_firewall.azurerm_virtual_network.default (expand)" -> "[root] module.azurerm_firewall.var.address_space (expand)"
+		"[root] module.azurerm_firewall.output.public_ip_address (expand)" -> "[root] module.azurerm_firewall.azurerm_public_ip.default (expand)"
+		"[root] module.azurerm_firewall.provider[\"registry.terraform.io/hashicorp/azurerm\"] (close)" -> "[root] module.azurerm_firewall.azurerm_firewall.default (expand)"
+		"[root] module.azurerm_firewall.provider[\"registry.terraform.io/hashicorp/azurerm\"] (close)" -> "[root] module.azurerm_firewall.azurerm_firewall_policy_rule_collection_group.default (expand)"
+		"[root] module.azurerm_firewall.provider[\"registry.terraform.io/hashicorp/azurerm\"]" -> "[root] module.azurerm_firewall (expand)"
+		"[root] module.azurerm_firewall.var.address_prefix (expand)" -> "[root] module.azurerm_firewall (expand)"
+		"[root] module.azurerm_firewall.var.address_space (expand)" -> "[root] module.azurerm_firewall (expand)"
+		"[root] module.azurerm_firewall.var.location (expand)" -> "[root] module.azurerm_firewall (expand)"
+		"[root] module.azurerm_firewall.var.name (expand)" -> "[root] module.azurerm_firewall (expand)"
+		"[root] output.public_ip_address" -> "[root] module.azurerm_firewall.output.public_ip_address (expand)"
+		"[root] root" -> "[root] meta.count-boundary (EachMode fixup)"
+		"[root] root" -> "[root] module.azurerm_firewall.provider[\"registry.terraform.io/hashicorp/azurerm\"] (close)"
+	}
+}
+
